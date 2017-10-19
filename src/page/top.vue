@@ -7,16 +7,16 @@
       <ul>
         <li v-for="i in top">
           <router-link :to="'/subject/' + i.id">
-            <div class="theaters-img">
+            <div class="top-img">
               <img :src="i.images.large">
             </div>
           </router-link>
           <router-link :to="'/subject/' + i.id">
-            <p class="theaters-title">
+            <p class="top-title">
               {{ i.title }}
             </p>
           </router-link>
-          <p class="theaters-star">{{ i.rating.average }}</p>
+          <p class="top-star">豆瓣评分 <span>{{ i.rating.average }}</span></p>
         </li>
       </ul>
     </div>

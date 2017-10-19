@@ -2,9 +2,9 @@
   <div>
     <myHeader></myHeader>
 
-    <div class="theaters">
-      <h4>正在热映</h4>
-      <ul>
+    <div class="theaters content">
+      <h3>正在热映</h3>
+      <ul class="clearfloat">
         <li v-for="i in alldata.theaters">
           <router-link :to="'/subject/' + i.id">
             <div class="theaters-img">
@@ -21,20 +21,20 @@
       </ul>
     </div>
 
-    <div class="coming">
+    <div class="coming content">
       <h3>即将上映</h3>
-      <ul>
+      <ul class="clearfloat">
         <li v-for="i in alldata.coming">
-          <router-link :to="'/subject/' + i.id">
-            <div class="coming-img">
+          <div class="coming-img">
+            <router-link :to="'/subject/' + i.id">
               <img :src="i.images.large">
-            </div>
-          </router-link>
-          <router-link :to="'/subject/' + i.id">
-            <p class="coming-title">
+            </router-link>
+          </div>
+          <p class="coming-title">
+            <router-link :to="'/subject/' + i.id">
               {{ i.title }}
-            </p>
-          </router-link>
+            </router-link>
+          </p>
           <p class="coming-star" v-html="returnStar(i.rating.average)"></p>
         </li>
       </ul>
@@ -83,3 +83,33 @@ export default {
   }
 }
 </script>
+<style>
+  .theaters,.coming{
+    padding-top: 30px;
+  }
+  .theaters h3,.coming h3{
+    line-height: 26px;
+  }
+  .theaters li,.coming li{
+    float: left;
+    margin: 13px;
+  }
+  .theaters-img,.coming-img{
+    width: 140px;
+    height: 190px;
+    overflow-y: hidden;
+  }
+  .theaters-title,.coming-title{
+    margin-top: 6px;
+    margin-bottom: 4px;
+    color: #37a;
+  }
+  .theaters-star,.coming-star{
+    font-size: 12px;
+    color: #6d6d6d;
+  }
+  .theaters-star span,.coming-star span{
+    color: #e09015;
+    margin-left: 5px;
+  }
+</style>

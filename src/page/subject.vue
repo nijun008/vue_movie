@@ -1,15 +1,13 @@
 <template>
   <div>
     <myHeader></myHeader>
-    <div class="subject">
+    <div class="subject content">
       <h2>{{ subject.title }}<span>({{ subject.year }})</span></h2>
-      <div v-if="subject.rating" class="subject-box">
-        <div class="subject-img">
+      <div v-if="subject.rating" class="subject-box clearfloat">
+        <div class="subject-img fl">
           <img v-if="subject.images" :src="subject.images.large">
         </div>
-        <div class="subject-info">
-          <p v-if="subject.rating.average != 0">豆瓣评分：<span>{{ subject.rating.average }}</span></p>
-          <p v-else>暂无评分</p>
+        <div class="subject-info fl">
           <p>导演：
             <template v-for="(i,index) in subject.directors">
               <span v-if="index != 0"> /</span>
@@ -25,7 +23,7 @@
           <p>类型：
             <template v-for="(i,index) in subject.genres">
               <span v-if="index != 0"> /</span>
-              {{ i }}
+              <span>{{ i }}</span>
             </template>
           </p>
           <p>国家/地区：
@@ -40,12 +38,14 @@
               {{ i }}
             </span>
           </p>
+          <p v-if="subject.rating.average != 0">豆瓣评分：<span>{{ subject.rating.average }}</span></p>
+          <p v-else>暂无评分</p>
         </div>
-        <div>
+      </div>
+      <div class="summary-box">
           <h4>{{ subject.title }}剧情介绍</h4>
           <p>{{ subject.summary }}</p>
         </div>
-      </div>
     </div>
     <myFooter></myFooter>
   </div>
@@ -75,3 +75,42 @@ export default {
   }
 }
 </script>
+<style>
+  .subject{
+    padding: 40px 0;
+  }
+  .subject>h2{
+    color: #444;
+    margin-bottom: 10px;
+  }
+  .subject>h2>span{
+    color: #999;
+    margin-left: 10px;
+  }
+  .subject-box{
+
+  }
+  .subject-img{
+    width: 30%;
+  }
+  .subject-info{
+    padding-left: 2%;
+    width: 70%;
+    line-height: 22px;
+    color: #666;
+  }
+  .subject-info span{
+    color: #222;
+  }
+  .summary-box{
+    margin-top: 20px;
+    clear: both;
+    line-height: 22px;
+  }
+  .summary-box h4{
+    color: #007722;
+  }
+  .summary-box p{
+    color: #444;
+  }
+</style>

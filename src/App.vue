@@ -70,4 +70,10 @@ body,html{
   zoom: 1;
   clear: both;
 }
+.content{
+  max-width: 1000px;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
 </style>
