@@ -38,6 +38,7 @@
             豆瓣评分 <span>{{ i.subject.rating.average }}</span>
           </p>
           <p v-else>暂无评分</p>
+          <p>{{ i.subject.year }}</p>
         </li>
       </ul>
     </div>
@@ -63,7 +64,6 @@ export default {
       this.axios.get('v2/movie/celebrity/' + this.id)
       .then(res => {
         this.celebrity = res.data
-        console.log(this.celebrity)
       })
     }
   }
