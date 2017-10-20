@@ -56,7 +56,6 @@ export default {
     getTop () {
       this.axios.get('/v2/movie/top250?start=' + this.start)
       .then(res => {
-        // this.top.push(res.data.subjects[0])
         this.top = this.top.concat(res.data.subjects)
         this.start += 20
         if (this.start >= 250) {
