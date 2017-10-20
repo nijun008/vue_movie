@@ -1,9 +1,9 @@
 <template>
   <div>
     <myHeader></myHeader>
-    <div class="celebrity" v-if="celebrity.name">
+    <div class="celebrity content" v-if="celebrity.name">
       <h3>{{ celebrity.name }} {{ celebrity.name_en }}</h3>
-      <div class="celebrity-box">
+      <div class="celebrity-box clearfloat">
         <div class="celebrity-img">
           <img :src="celebrity.avatars.large">
         </div>
@@ -15,30 +15,36 @@
               <span v-if="index != 0">/</span>{{ i.roles[0] }}
             </span>
           </p>
-          <p>别名：
+          <p v-if="celebrity.aka.length > 0">别名：
             <span v-for="(i,index) in celebrity.aka">
               <span v-if="index != 0">/</span>{{ i }}
             </span>
           </p>
+          <p>
+            <a :href="celebrity.alt" target="_blank">更多信息</a>
+          </p>
         </div>
       </div>
-      <ul>
-        <li v-for="i in celebrity.works">
-          <router-link :to="'/subject/' + i.subject.id">
-            <div class="works-star-img">
+      <ul class="works-list clearfloat">
+        <h3>作品</h3>
+        <li v-for="i in celebrity.works" class="clearfloat">
+          <div class="works-img">
+            <router-link :to="'/subject/' + i.subject.id">
               <img :src="i.subject.images.large">
-            </div>
-          </router-link>
-          <router-link :to="'/subject/' + i.subject.id">
-            <p class="works-star-title">
-              {{ i.subject.title }}
+            </router-link>
+          </div>
+          <div>
+            <router-link :to="'/subject/' + i.subject.id">
+              <p class="works-title">
+                {{ i.subject.title }}
+              </p>
+            </router-link>
+            <p class="works-star" v-if="i.subject.rating.average != 0">
+              豆瓣评分 <span>{{ i.subject.rating.average }}</span>
             </p>
-          </router-link>
-          <p class="works-star" v-if="i.subject.rating.average != 0">
-            豆瓣评分 <span>{{ i.subject.rating.average }}</span>
-          </p>
-          <p v-else>暂无评分</p>
-          <p>{{ i.subject.year }}</p>
+            <p v-else>暂无评分</p>
+            <p>{{ i.subject.year }}</p>
+          </div>
         </li>
       </ul>
     </div>
@@ -69,3 +75,42 @@ export default {
   }
 }
 </script>
+<style>
+  .celebrity{
+    padding-top: 30px;
+  }
+  .celebrity h3{
+    line-height: 40px;
+    color: #555;
+  }
+  .celebrity-img{
+    float: left;
+    width: 30%;
+  }
+  .celebrity-info{
+    float: left;
+    width: 70%;
+    padding-left: 20px;
+    color: #4d4d4d;
+    line-height: 22px;
+  }
+  .works-list{
+    margin-top: 50px;
+    line-height: 22px;
+  }
+  .works-list li{
+    margin-bottom: 20px;
+    float: left;
+    margin: 20px;
+    color: #6d6d6d;
+  }
+  .works-img{
+    width: 160px;
+    height: 224px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+  .works-star span{
+    color: yellow;
+  }
+</style>
