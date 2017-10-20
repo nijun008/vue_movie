@@ -4,7 +4,7 @@
       <div class="clearfloat wrap-search">
         <div class="logo fl"><router-link :to="'/'">电影</router-link></div>
         <div class="search-box clearfloat fl">
-          <input type="text" v-model="keyword" placeholder="电影、电影人">
+          <input type="text" v-model="keyword" :placeholder="keyword ? keyword : '电影、电影人'">
           <button @click="search">搜索</button>
         </div>
       </div>

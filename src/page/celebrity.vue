@@ -64,12 +64,14 @@ export default {
   },
   created () {
     this.getCelebrity()
+    document.title = '电影人'
   },
   methods: {
     getCelebrity () {
       this.axios.get('v2/movie/celebrity/' + this.id)
       .then(res => {
         this.celebrity = res.data
+        document.title = '电影人-' + this.celebrity.name
       })
     }
   }
@@ -111,6 +113,6 @@ export default {
     margin-bottom: 8px;
   }
   .works-star span{
-    color: yellow;
+    color: #e09015;
   }
 </style>

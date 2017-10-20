@@ -3,7 +3,7 @@
     <myHeader></myHeader>
 
      <div class="usrank" v-if="usrank.length > 0">
-      <h4>北美票房排行榜</h4>
+      <h4>北美票房榜</h4>
       <ul>
         <li v-for="i in usrank">
           <router-link :to="'/subject/' + i.subject.id">
@@ -38,6 +38,7 @@ export default {
   },
   created () {
     this.getTop()
+    document.title = '北美票房榜'
   },
   methods: {
     getTop () {

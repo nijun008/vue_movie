@@ -64,12 +64,14 @@ export default {
   },
   created () {
     this.getSubject()
+    document.title = '电影'
   },
   methods: {
     getSubject () {
       this.axios.get('/v2/movie/subject/' + this.id)
       .then(res => {
         this.subject = res.data
+        document.title = '电影-' + this.subject.title
       })
     }
   }

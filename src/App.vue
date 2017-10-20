@@ -53,8 +53,7 @@ img{
   max-width: 100%;
 }
 body,html{
-  font-family: 'Microsoft YaHei';
-  font-size: 14px;
+  font: 14px Helvetica,Arial,sans-serif;
 }
 .fl{
   float: left;

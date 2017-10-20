@@ -41,7 +41,7 @@
 
     <div class="coming content">
       <h3>即将上映</h3>
-      <swiper :options="swiperOption">
+      <swiper :options="swiperOption2">
       <swiper-slide v-for="i in coming">
         <router-link :to="'/subject/' + i.id">
           <div class="coming-img">
@@ -97,12 +97,23 @@ export default {
         paginationClickable: true,
         observeParents: true,
         spaceBetween: 40
+      },
+      swiperOption2: {
+        slidesPerView: 5,
+        slidesPerGroup: 5,
+        autoplay: 6000,
+        setWrapperSize: true,
+        pagination: '.swiper-pagination',
+        paginationClickable: true,
+        observeParents: true,
+        spaceBetween: 40
       }
     }
   },
   created () {
     this.getTheaters()
     this.getComing()
+    document.title = '电影'
   },
   methods: {
     getTheaters () {
