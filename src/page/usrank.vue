@@ -6,17 +6,15 @@
       <h4>北美票房榜</h4>
       <ul>
         <li v-for="i in usrank">
-          <router-link :to="'/subject/' + i.subject.id">
-            <div class="theaters-img">
+          <div class="usrank-img">
+            <router-link :to="'/subject/' + i.subject.id">
               <img :src="i.subject.images.large">
-            </div>
-          </router-link>
-          <router-link :to="'/subject/' + i.subject.id">
-            <p class="theaters-title">
-              {{ i.subject.title }}
-            </p>
-          </router-link>
-          <p v-if="i.subject.rating.average != 0" class="theaters-star">豆瓣评分：
+            </router-link>
+          </div>
+          <p class="usrank-title">
+            <router-link :to="'/subject/' + i.subject.id">{{ i.subject.title }}</router-link>
+          </p>
+          <p v-if="i.subject.rating.average != 0" class="usrank-star">豆瓣评分：
             <span>{{ i.subject.rating.average }}</span></p>
           <p v-else>暂无评分</p>
         </li>
