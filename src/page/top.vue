@@ -24,8 +24,8 @@
             <p>{{ i.collect_count }}人喜欢</p>
           </div>
         </li>
-        <div class="wran" v-if="loading">加载中.....</div>
-        <div class="warn" v-if="done">没有更多了</div>
+        <div class="top-tip" v-if="loading">加载中.....</div>
+        <div class="top-tip" v-if="done">没有更多了！</div>
       </ul>
     </div>
 
@@ -50,7 +50,11 @@ export default {
     document.title = 'top250'
   },
   mounted () {
-    window.addEventListener('scroll', this.handleScroll)
+    if (this.$route.path === '/top') {
+      window.addEventListener('scroll', this.handleScroll)
+    } else {
+      window.removeEventListener('scroll', this.handleScroll)
+    }
   },
   methods: {
     getTop () {
@@ -59,6 +63,7 @@ export default {
         this.top = this.top.concat(res.data.subjects)
         this.start += 20
         if (this.start >= 250) {
+          this.loading = false
           this.done = true
         } else {
           window.addEventListener('scroll', this.handleScroll)
@@ -106,7 +111,7 @@ export default {
   .top-star span{
     color: #e09015;
   }
-  .wran{
+  .top-tip{
     text-align: center;
     font-size: 18px;
     line-height: 40px;
