@@ -50,30 +50,30 @@ export default {
     document.title = 'top250'
   },
   mounted () {
-    if (this.$route.path === '/top') {
-      window.addEventListener('scroll', this.handleScroll)
-    } else {
-      window.removeEventListener('scroll', this.handleScroll)
-    }
+    window.addEventListener('scroll', this.handleScroll)
   },
   methods: {
     getTop () {
-      this.axios.get('/v2/movie/top250?start=' + this.start)
-      .then(res => {
-        this.top = this.top.concat(res.data.subjects)
-        this.start += 20
-        if (this.start >= 250) {
-          this.loading = false
-          this.done = true
-        } else {
-          window.addEventListener('scroll', this.handleScroll)
-        }
-      })
+      if (this.$route.path === '/top') {
+        this.axios.get('/v2/movie/top250?start=' + this.start)
+        .then(res => {
+          this.top = this.top.concat(res.data.subjects)
+          this.start += 20
+          if (this.start >= 250) {
+            this.loading = false
+            this.done = true
+          } else {
+            window.addEventListener('scroll', this.handleScroll)
+          }
+        })
+      } else {
+        window.removeEventListener('scroll', this.handleScroll)
+      }
     },
     handleScroll () {
-      if (document.body.clientHeight - window.scrollY < 1500) {
-        this.loading = true
+      if (document.body.clientHeight - window.scrollY < 1300) {
         window.removeEventListener('scroll', this.handleScroll)
+        this.loading = true
         this.getTop()
       }
     }
