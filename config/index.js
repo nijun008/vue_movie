@@ -36,6 +36,11 @@ module.exports = {
         target: 'http://api.douban.com',
         secure: false,
         changeOrigin: true,
+      },
+      '/j/subject_abstract': {
+        target: 'https://movie.douban.com',
+        secure: false,
+        changeOrigin: true,
       }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"

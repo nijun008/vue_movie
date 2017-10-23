@@ -101,7 +101,7 @@ export default {
       swiperOption2: {
         slidesPerView: 5,
         slidesPerGroup: 5,
-        autoplay: 6000,
+        autoplay: 0,
         setWrapperSize: true,
         pagination: '.swiper-pagination',
         paginationClickable: true,
@@ -117,13 +117,13 @@ export default {
   },
   methods: {
     getTheaters () {
-      this.axios.get('/v2/movie/in_theaters?count=22')
+      this.axios.get('/v2/movie/in_theaters?count=25')
       .then(res => {
         this.theaters = res.data.subjects
       })
     },
     getComing () {
-      this.axios.get('/v2/movie/coming_soon?start=0&count=50')
+      this.axios.get('/v2/movie/coming_soon?start=0&count=40')
       .then(res => {
         this.coming = res.data.subjects
       })

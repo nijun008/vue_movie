@@ -40,6 +40,10 @@
           </p>
           <p v-if="subject.rating.average != 0">豆瓣评分：<span>{{ subject.rating.average }}</span></p>
           <p v-else>暂无评分</p>
+          <p class="long">片长：<span>{{ view.duration }}</span></p>
+          <p v-if="view.short_comment" class="view">
+            精彩短评：<span>{{ view.short_comment.content }}</span>
+          </p>
         </div>
       </div>
       <div class="summary-box">
@@ -59,7 +63,8 @@ export default {
     return {
       id: this.$route.params.id,
       subject: {},
-      comments: {}
+      comments: {},
+      view: {}
     }
   },
   created () {
@@ -72,6 +77,10 @@ export default {
       .then(res => {
         this.subject = res.data
         document.title = '电影-' + this.subject.title
+      })
+      this.axios.get('/j/subject_abstract?subject_id=' + this.id)
+      .then(res => {
+        this.view = res.data.subject
       })
     }
   }
