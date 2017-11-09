@@ -5,7 +5,7 @@
       <h3>{{ celebrity.name }} {{ celebrity.name_en }}</h3>
       <div class="celebrity-box clearfloat">
         <div class="celebrity-img">
-          <img :src="celebrity.avatars.large">
+          <img :src="celebrity.avatars.large" onerror="this.src='http://i1.bvimg.com/588469/9dc16a40f9826acc.png'">
         </div>
         <div class="celebrity-info">
           <p>性别：<span>{{ celebrity.gender }}</span></p>
@@ -30,7 +30,7 @@
         <li v-for="i in celebrity.works" class="clearfloat">
           <div class="works-img">
             <router-link :to="'/subject/' + i.subject.id">
-              <img :src="i.subject.images.large">
+              <img :src="i.subject.images.large" onerror="this.src='http://i1.bvimg.com/588469/9dc16a40f9826acc.png'">
             </router-link>
           </div>
           <div>

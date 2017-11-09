@@ -8,7 +8,7 @@
       <swiper-slide v-for="i in theaters">
         <router-link :to="'/subject/' + i.id">
           <div class="theaters-img">
-            <img :src="i.images.large">
+            <img :src="i.images.large" onerror="this.src='http://i1.bvimg.com/588469/9dc16a40f9826acc.png'">
           </div>
         </router-link>
         <router-link :to="'/subject/' + i.id">
@@ -45,7 +45,7 @@
       <swiper-slide v-for="i in coming">
         <router-link :to="'/subject/' + i.id">
           <div class="coming-img">
-            <img :src="i.images.large">
+            <img :src="i.images.large" onerror="this.src='http://i1.bvimg.com/588469/9dc16a40f9826acc.png'">
           </div>
         </router-link>
         <router-link :to="'/subject/' + i.id">

@@ -9,7 +9,7 @@
           <p class="box" :class="{ 'red':i.rank == 1, 'orange':i.rank == 2, 'yellow':i.rank == 3, 'blue':i.rank == 4 }">${{ i.box }}</p>
           <div class="usrank-img fl">
             <router-link :to="'/subject/' + i.subject.id">
-              <img :src="i.subject.images.large">
+              <img :src="i.subject.images.large" onerror="this.src='http://i1.bvimg.com/588469/9dc16a40f9826acc.png'">
             </router-link>
           </div>
           <div class="usrank-info fl">

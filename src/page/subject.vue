@@ -5,7 +5,7 @@
       <h2>{{ subject.title }}<span>({{ subject.year }})</span></h2>
       <div v-if="subject.rating" class="subject-box clearfloat">
         <div class="subject-img fl">
-          <img v-if="subject.images" :src="subject.images.large">
+          <img v-if="subject.images" :src="subject.images.large" onerror="this.src='http://i1.bvimg.com/588469/9dc16a40f9826acc.png'">
         </div>
         <div class="subject-info fl">
           <p>导演：

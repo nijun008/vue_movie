@@ -8,7 +8,7 @@
         <li v-for="i in result" class="clearfloat">
           <div class="search-img fl">
             <router-link :to="'/subject/' + i.id">
-              <img :src="i.images.large">
+              <img :src="i.images.large" onerror="this.src='http://i1.bvimg.com/588469/9dc16a40f9826acc.png'">
             </router-link>
           </div>
           <div class="search-info fl">
